@@ -99,7 +99,7 @@ Udacity Full Stack Developer Linux Server Project
         - $ sudo nano /etc/apache2/sites-available/FlaskApp.conf
 2. Add the following to this new file:
 
-<VirtualHost *:80>
+'''<VirtualHost *:80>
 	ServerName 54.152.137.233
 	ServerAdmin ubuntu@54.152.137.233
 	WSGIScriptAlias / /var/www/FlaskApp/flaskapp.wsgi
@@ -116,7 +116,7 @@ Udacity Full Stack Developer Linux Server Project
 	LogLevel warn
 	CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
-
+'''
 3. Save and quit  
 4. Enable your virtual host:
         - $ sudo a2ensite FlaskApp
