@@ -77,3 +77,64 @@ Udacity Full Stack Developer Linux Server Project
     - $ cd FlaskApp
 5. Clone Items Catalog project into this folder 
     - git clone https://github.com/gavmcnamara/music-catalog-api.git
+6. Rename project:
+        - $ sudo mv ./music-catalog-api ./ItemsApp
+7. Move into ItemsApp
+        - $ cd ItemsApp
+8. Rename flask_project.py to __init__.py
+9. Edit tables.py and bandsandgenres.py to have new database:
+        - create_engine('postgresql://catalog:password@localhost/catalog')
+10. Install pip:
+        - $ sudo spt-get install python-pip
+11. Use pip to install requirements:
+        - pip3 install --upgrade pip
+        - pip3 install flask packaging oauth2client redis passlib flask-httpauth
+         -pip3 install sqlalchemy flask-sqlalchemy psycopg2 bleach requests
+12. Install psycopg2:
+        - $ sudo apt-get -qqy install postgresql python-psycopg2
+13. Create database schema:
+        - sudo python tables.py
+# Set up Server so it functions correctly
+1. Create FlaskApp.conf and edit:
+        - $ sudo nano /etc/apache2/sites-available/FlaskApp.conf
+2. Add the following to this new file:
+
+<VirtualHost *:80>
+	ServerName 54.152.137.233
+	ServerAdmin ubuntu@54.152.137.233
+	WSGIScriptAlias / /var/www/FlaskApp/flaskapp.wsgi
+	<Directory /var/www/FlaskApp/ItemsApp/>
+		Order allow,deny
+		Allow from all
+	</Directory>
+	Alias /static /var/www/FlaskApp/ItemsApp/static
+	<Directory /var/www/FlaskApp/ItemsApp/static/>
+		Order allow,deny
+		Allow from all
+	</Directory>
+	ErrorLog ${APACHE_LOG_DIR}/error.log
+	LogLevel warn
+	CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+3. Save and quit  
+4. Enable your virtual host:
+        - $ sudo a2ensite FlaskApp
+# Create your .wsgi file 
+1. Go back to directory FlaskApp and create flaskapp.wsgi
+        - $ cd /var/www/FlaskApp
+        - $ sudo nano flaskapp.wsgi
+2. Add to new file:
+
+#!/usr/bin/python
+import sys
+import logging
+logging.basicConfig(stream=sys.stderr)
+sys.path.insert(0,"/var/www/FlaskApp/")
+
+from ItemsApp import app as application
+application.secret_key = 'Add your secret key'
+
+3. Save and quit
+# Restart apache server
+- $ sudo service apache2 restart 
