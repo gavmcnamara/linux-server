@@ -99,23 +99,23 @@ Udacity Full Stack Developer Linux Server Project
         - $ sudo nano /etc/apache2/sites-available/FlaskApp.conf
 2. Add the following to this new file:
 
-- <VirtualHost *:80>
-- 	ServerName 54.152.137.233
-- 	ServerAdmin ubuntu@54.152.137.233
-- 	WSGIScriptAlias / /var/www/FlaskApp/flaskapp.wsgi
-- 	<Directory /var/www/FlaskApp/ItemsApp/>
-- 		Order allow,deny
-- 		Allow from all
-- 	</Directory>
-- 	Alias /static /var/www/FlaskApp/ItemsApp/static
-- 	<Directory /var/www/FlaskApp/ItemsApp/static/>
-- 		Order allow,deny
-- 		Allow from all
-- 	</Directory>
-- 	ErrorLog ${APACHE_LOG_DIR}/error.log
-- 	LogLevel warn
--	CustomLog ${APACHE_LOG_DIR}/access.log combined
-- </VirtualHost>
+''' <VirtualHost *:80>
+ 	ServerName 54.152.137.233
+ 	ServerAdmin ubuntu@54.152.137.233
+ 	WSGIScriptAlias / /var/www/FlaskApp/flaskapp.wsgi
+ 	<Directory /var/www/FlaskApp/ItemsApp/>
+ 		Order allow,deny
+ 		Allow from all
+ 	</Directory>
+ 	Alias /static /var/www/FlaskApp/ItemsApp/static
+ 	<Directory /var/www/FlaskApp/ItemsApp/static/>
+ 		Order allow,deny
+ 		Allow from all
+ 	</Directory>
+ 	ErrorLog ${APACHE_LOG_DIR}/error.log
+ 	LogLevel warn
+	CustomLog ${APACHE_LOG_DIR}/access.log combined
+ </VirtualHost> '''
 
 3. Save and quit  
 4. Enable your virtual host:
