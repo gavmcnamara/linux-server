@@ -99,24 +99,24 @@ Udacity Full Stack Developer Linux Server Project
         - $ sudo nano /etc/apache2/sites-available/FlaskApp.conf
 2. Add the following to this new file:
 
-'''<VirtualHost *:80>
-	ServerName 54.152.137.233
-	ServerAdmin ubuntu@54.152.137.233
-	WSGIScriptAlias / /var/www/FlaskApp/flaskapp.wsgi
-	<Directory /var/www/FlaskApp/ItemsApp/>
-		Order allow,deny
-		Allow from all
-	</Directory>
-	Alias /static /var/www/FlaskApp/ItemsApp/static
-	<Directory /var/www/FlaskApp/ItemsApp/static/>
-		Order allow,deny
-		Allow from all
-	</Directory>
-	ErrorLog ${APACHE_LOG_DIR}/error.log
-	LogLevel warn
-	CustomLog ${APACHE_LOG_DIR}/access.log combined
-</VirtualHost>
-'''
+- <VirtualHost *:80>
+- 	ServerName 54.152.137.233
+- 	ServerAdmin ubuntu@54.152.137.233
+- 	WSGIScriptAlias / /var/www/FlaskApp/flaskapp.wsgi
+- 	<Directory /var/www/FlaskApp/ItemsApp/>
+- 		Order allow,deny
+- 		Allow from all
+- 	</Directory>
+- 	Alias /static /var/www/FlaskApp/ItemsApp/static
+- 	<Directory /var/www/FlaskApp/ItemsApp/static/>
+- 		Order allow,deny
+- 		Allow from all
+- 	</Directory>
+- 	ErrorLog ${APACHE_LOG_DIR}/error.log
+- 	LogLevel warn
+-	CustomLog ${APACHE_LOG_DIR}/access.log combined
+- </VirtualHost>
+
 3. Save and quit  
 4. Enable your virtual host:
         - $ sudo a2ensite FlaskApp
@@ -126,14 +126,14 @@ Udacity Full Stack Developer Linux Server Project
         - $ sudo nano flaskapp.wsgi
 2. Add to new file:
 
-#!/usr/bin/python
-import sys
-import logging
-logging.basicConfig(stream=sys.stderr)
-sys.path.insert(0,"/var/www/FlaskApp/")
+- #!/usr/bin/python
+- import sys
+- import logging
+- logging.basicConfig(stream=sys.stderr)
+- sys.path.insert(0,"/var/www/FlaskApp/")
 
-from ItemsApp import app as application
-application.secret_key = 'Add your secret key'
+- from ItemsApp import app as application
+- application.secret_key = 'Add your secret key'
 
 3. Save and quit
 # Restart apache server
