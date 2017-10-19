@@ -1,4 +1,6 @@
 This is the 5th and final project for Udacity Full Stack Nanodegree
+# Resources 
+- Used tutorial from https://www.digitalocean.com/community/tutorials/how-to-create-a-sudo-user-on-ubuntu-quickstart
 # linux-server
 Udacity Full Stack Developer Linux Server Project 
 - IP ADDRESS: 54.152.137.233
