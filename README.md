@@ -115,7 +115,8 @@ Udacity Full Stack Developer Linux Server Project
  	ErrorLog ${APACHE_LOG_DIR}/error.log
  	LogLevel warn
 	CustomLog ${APACHE_LOG_DIR}/access.log combined
- </VirtualHost> ```
+ </VirtualHost> 
+ ```
 
 3. Save and quit  
 4. Enable your virtual host:
@@ -126,15 +127,15 @@ Udacity Full Stack Developer Linux Server Project
         - $ sudo nano flaskapp.wsgi
 2. Add to new file:
 
-- #!/usr/bin/python
-- import sys
-- import logging
-- logging.basicConfig(stream=sys.stderr)
-- sys.path.insert(0,"/var/www/FlaskApp/")
+``` #!/usr/bin/python
+ import sys
+ import logging
+ logging.basicConfig(stream=sys.stderr)
+ sys.path.insert(0,"/var/www/FlaskApp/")
 
-- from ItemsApp import app as application
-- application.secret_key = 'Add your secret key'
-
+ from ItemsApp import app as application
+ application.secret_key = 'Add your secret key'
+```
 3. Save and quit
 # Restart apache server
 - $ sudo service apache2 restart 
